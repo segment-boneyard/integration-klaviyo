@@ -1,8 +1,8 @@
-[![Build Status](https://circleci.com/gh/segmentio/integration-klaviyo.png)](https://circleci.com/gh/segmentio/integration-klaviyo)
+[![Build Status](https://circleci.com/gh/segmentio/integration-klaviyo/tree/master.png?style=badge)](https://circleci.com/gh/segmentio/integration-klaviyo/tree/master)
 
-# Klaviyo server-side integration.
+# integration-klaviyo
 
-Write me...
+Klaviyo server-side integration for Segment.
 
 
 ## License
