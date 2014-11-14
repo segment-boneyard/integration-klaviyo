@@ -1,0 +1,37 @@
+{
+  "input": {
+    "type": "identify",
+    "anonymousId": "user-id",
+    "traits": {
+      "email": "johndoe@segment.io",
+      "firstName": "John",
+      "lastName": "Doe",
+      "phone": "5555",
+      "title": "some-title",
+      "organization": "org",
+      "company": "segment",
+      "some-trait": "value"
+    }
+  },
+  "output": {
+    "token": "eHdVzM",
+    "properties": {
+      "$id": "user-id",
+      "$email": "johndoe@segment.io",
+      "$first_name": "John",
+      "$last_name": "Doe",
+      "$phone_number": "5555",
+      "$title": "some-title",
+      "$organization": "org",
+      "$company": "segment",
+      "email": "johndoe@segment.io",
+      "firstName": "John",
+      "lastName": "Doe",
+      "phone": "5555",
+      "title": "some-title",
+      "some-trait": "value",
+      "organization": "org",
+      "company": "segment"
+    }
+  }
+}
