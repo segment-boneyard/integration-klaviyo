@@ -22,8 +22,7 @@ describe('Klaviyo', function () {
       .name('Klaviyo')
       .endpoint('http://a.klaviyo.com/api')
       .ensure('settings.apiKey')
-      .channels(['server'])
-      .retries(2);
+      .channels(['server']);
   });
 
   describe('.validate()', function () {
