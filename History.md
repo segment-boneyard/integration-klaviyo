@@ -1,4 +1,11 @@
 
+1.0.6 / 2015-06-25
+==================
+
+  * deps: bump integration proto
+  * Update circle template
+
+
 1.0.5 / 2014-12-08
 ==================
 
