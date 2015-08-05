@@ -63,13 +63,15 @@ exports.transaction = function(options){
         price: 24.75,
         name: 'Sony Pulse',
         sku: 'p-957c416f',
-        category: 'Entertainment'
+        category: 'Entertainment',
+        productUrl: 'http://www.example.com/path/to/product',
+        imageUrl: 'http://www.example.com/path/to/product/image.png',
       }, {
         quantity: 3,
         price: 24.75,
         name: 'Sony PS3',
         sku: 'p-5bd14e17',
-        category: 'Entertainment'
+        category: 'Consoles'
       }]
     },
     options: {

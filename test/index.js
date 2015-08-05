@@ -12,7 +12,7 @@ describe('Klaviyo', function () {
   var test;
 
   beforeEach(function(){
-    settings = { apiKey: 'eHdVzM' };
+    settings = { apiKey: 'hfWBjc' };
     klaviyo = new Klaviyo(settings);
     test = Test(klaviyo, __dirname);
   });
@@ -51,6 +51,14 @@ describe('Klaviyo', function () {
       it('should map basic track', function(){
         test.maps('track-basic', settings);
       });
+
+      it('should map completed order', function() {
+        test.maps('track-completed-order', settings);
+      });
+
+      it('should map completed order with urls', function() {
+        test.maps('track-completed-order-urls', settings);
+      });
     });
   });
 
@@ -69,8 +77,54 @@ describe('Klaviyo', function () {
         .track(helpers.track())
         .error('Klaviyo: bad response', done);
     });
-  });
 
+    describe('.completedOrder()', function(){
+      it('should successfully send the Placed Order event', function(done){
+        var json = test.fixture('track-completed-order');
+
+        test
+          .set(settings)
+          .track(json.input)
+          .request(0)
+          .query('data', json.output.order, decode)
+          .expects(200)
+          .end(done);
+      });
+
+      it('should sucessfully send the Ordered Product event', function(done){
+        var json = test.fixture('track-completed-order');
+
+        test
+          .set(settings)
+          .track(json.input)
+          .request(1)
+          .query('data', json.output.products[0], decode)
+          .expects(200)
+          .end(done);
+      });
+
+      it('should sucessfully send Order Product event for each product', function(done){
+        var json = test.fixture('track-completed-order');
+
+        test
+          .set(settings)
+          .track(json.input)
+          .requests(3);
+
+        test
+          .request(1)
+          .query('data', json.output.products[0], decode)
+          .expects(200);
+
+        test
+          .request(2)
+          .query('data', json.output.products[1], decode)
+          .expects(200);
+
+        test.end(done);
+      });
+    });
+  });
 
   describe('.identify()', function () {
     it('should be able to identify correctly', function(done){
@@ -89,3 +143,16 @@ describe('Klaviyo', function () {
     });
   });
 });
+
+/**
+ * Decode base64 and parse json
+ *
+ * @param {Object} data
+ * @return {Object} decoded payload
+ * @api private
+ */
+
+function decode(data){
+  var buf = new Buffer(data, 'base64');
+  return JSON.parse(buf.toString());
+}

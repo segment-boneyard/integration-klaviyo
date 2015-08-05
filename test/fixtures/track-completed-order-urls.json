@@ -1,0 +1,99 @@
+{
+  "input": {
+    "userId": "user-id",
+    "type": "track",
+    "event": "Completed Order",
+    "timestamp": "2014",
+    "properties": {
+      "orderId": "order-id",
+      "shipping": 5.00,
+      "total": 65.00,
+      "revenue": 50.00,
+      "tax": 10.00,
+      "currency": "USD",
+      "products": [{
+        "id": 123,
+        "sku": "sony-pulse-sku",
+        "category": "gaming",
+        "price": 20.00,
+        "name": "sony pulse",
+        "quantity": 1,
+        "productUrl": "http://www.example.com/path/to/product",
+        "imageUrl": "http://www.example.com/path/to/product/image.png"
+      }, {
+        "id": 455,
+        "sku": "sony-playstation-4-sku",
+        "category": "console",
+        "price": 30.00,
+        "name": "sony playstation 4",
+        "quantity": 1
+      }]
+    }
+  },
+  "output": {
+    "order": {
+      "token" : "hfWBjc",
+      "event" : "Placed Order",
+      "customer_properties" : {
+        "$id": "user-id"
+      },
+      "properties" : {
+        "$event_id" : "order-id",
+        "$value" : 50.00,
+        "Categories" : ["gaming", "console"],
+        "Item Names" : ["sony pulse", "sony playstation 4"],
+        "Items" : [
+          {
+            "SKU" : "sony-pulse-sku",
+            "Name" : "sony pulse",
+            "Quantity" : 1,
+            "Item Price" : 20.00,
+            "Row Total" : 20.00,
+            "Categories" : ["gaming"],
+            "Product URL": "http://www.example.com/path/to/product",
+            "Image URL": "http://www.example.com/path/to/product/image.png"
+          },
+          {
+            "SKU" : "sony-playstation-4-sku",
+            "Name" : "sony playstation 4",
+            "Quantity" : 1,
+            "Item Price" : 30.00,
+            "Row Total" : 30.00,
+            "Categories" : ["console"]
+          }
+        ]
+      },
+      "time" : 1388534400
+    },
+    "products": [
+      {
+        "token": "hfWBjc",
+        "event": "Ordered Product",
+        "time": 1388534400,
+        "customer_properties": { "$id": "user-id" },
+        "properties": {
+          "$event_id": 123,
+          "$value": 20,
+          "Name": "sony pulse",
+          "Product Categories": ["gaming"],
+          "Quantity": 1,
+          "Product URL": "http://www.example.com/path/to/product",
+          "Image URL": "http://www.example.com/path/to/product/image.png"
+        }
+      },
+      {
+        "token": "hfWBjc",
+        "event": "Ordered Product",
+        "time": 1388534400,
+        "customer_properties": { "$id": "user-id" },
+        "properties": {
+          "$event_id": 455,
+          "$value": 30,
+          "Name": "sony playstation 4",
+          "Product Categories": ["console"],
+          "Quantity": 1
+        }
+      }
+    ]
+  }
+}
