@@ -22,7 +22,7 @@
       "property": true,
       "email": "johndoe@segment.io",
       "revenue": 19.99,
-      "$value": 19.99
+      "value": 19.99
     }
   }
 }

@@ -34,11 +34,11 @@
     "order": {
       "token" : "hfWBjc",
       "event" : "Placed Order",
-      "$event_id" : "order-id",
       "customer_properties" : {
         "$id": "user-id"
       },
       "properties" : {
+        "$event_id" : "order-id",
         "$value" : 50.00,
         "Categories" : ["gaming", "console"],
         "Item Names" : ["sony pulse", "sony playstation 4"],
@@ -69,10 +69,10 @@
       {
         "token": "hfWBjc",
         "event": "Ordered Product",
-        "$event_id": 123,
         "time": 1388534400,
         "customer_properties": { "$id": "user-id" },
         "properties": {
+          "$event_id": 123,
           "$value": 20,
           "Name": "sony pulse",
           "Product Categories": ["gaming"],
@@ -86,8 +86,8 @@
         "event": "Ordered Product",
         "time": 1388534400,
         "customer_properties": { "$id": "user-id" },
-        "$event_id": 455,
         "properties": {
+          "$event_id": 455,
           "$value": 30,
           "Name": "sony playstation 4",
           "Product Categories": ["console"],
