@@ -1,0 +1,30 @@
+{
+  "input": {
+    "type": "track",
+    "userId": "user-id",
+    "event": "some-event",
+    "timestamp": "2014",
+    "properties": {
+      "revenue": 19.99,
+      "email": "johndoe@segment.io",
+      "property": true,
+      "eventId": "12314234"
+    }
+  },
+  "output": {
+    "token": "hfWBjc",
+    "event": "some-event",
+    "time": 1388534400,
+    "customer_properties": {
+      "$id": "user-id",
+      "$email": "johndoe@segment.io"
+    },
+    "properties": {
+      "property": true,
+      "email": "johndoe@segment.io",
+      "revenue": 19.99,
+      "$value": 19.99,
+      "$event_id": "12314234"
+    }
+  }
+}

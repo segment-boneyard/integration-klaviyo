@@ -52,6 +52,14 @@ describe('Klaviyo', function () {
         test.maps('track-basic', settings);
       });
 
+      it('should map orderId to $eventId', function(){
+        test.maps('track-orderId', settings);
+      });
+
+      it('should map eventId to $eventId', function(){
+        test.maps('track-eventId', settings);
+      });
+
       it('should map completed order', function() {
         test.maps('track-completed-order', settings);
       });
