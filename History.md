@@ -1,4 +1,9 @@
 
+1.0.9 / 2015-09-02
+==================
+
+  * map $event_id special prop in conventional track calls
+
 1.0.8 / 2015-08-27
 ==================
 
