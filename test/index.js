@@ -12,7 +12,11 @@ describe('Klaviyo', function () {
   var test;
 
   beforeEach(function(){
-    settings = { apiKey: 'hfWBjc' };
+    settings = { 
+      apiKey: 'hfWBjc',
+      privateKey: 'pk_95773fc9a18f5728da58471d70a4dcbcdf',
+      confirmOptin: true 
+    };
     klaviyo = new Klaviyo(settings);
     test = Test(klaviyo, __dirname);
   });
@@ -20,7 +24,7 @@ describe('Klaviyo', function () {
   it('should have correct settings', function(){
     test
       .name('Klaviyo')
-      .endpoint('http://a.klaviyo.com/api')
+      .endpoint('https://a.klaviyo.com/api')
       .ensure('settings.apiKey')
       .channels(['server']);
   });
@@ -44,6 +48,14 @@ describe('Klaviyo', function () {
 
       it('should fallback to anonymousId', function(){
         test.maps('identify-anonymous-id', settings);
+      });
+
+      it('should map listData if provided', function(){
+        test.maps('identify-list', settings);
+      });
+
+      it('should map and override listData if options provided', function(){
+        test.maps('identify-list-override', settings);
       });
     });
 
@@ -75,7 +87,7 @@ describe('Klaviyo', function () {
       test
         .set({ apiKey: null })
         .track(helpers.track())
-        .error('Klaviyo: bad response', done);
+        .error('bad response', done);
     });
 
     describe('.completedOrder()', function(){
@@ -119,27 +131,105 @@ describe('Klaviyo', function () {
         test
           .request(2)
           .query('data', json.output.products[1], decode)
-          .expects(200);
-
-        test.end(done);
+          .expects(200)
+          .end(done);
       });
     });
   });
 
   describe('.identify()', function () {
-    it('should be able to identify correctly', function(done){
+    it('should perform an identify call', function(done){
+      var json = test.fixture('identify-basic');
+      json.output.peopleData.token = settings.apiKey;
+
       test
         .set(settings)
-        .identify(helpers.identify())
+        .identify(json.input)
+        .query('data', json.output.peopleData, decode)
+        .expects(200);
+
+      test.end(done);
+    });
+
+    it('should perform an identify call and add to list if provided', function(done){
+      var json = test.fixture('identify-list');
+      json.output.peopleData.token = settings.apiKey;
+      json.output.listData.api_key = settings.privateKey;
+
+      test
+        .set(settings)
+        .identify(json.input)
+        .requests(2);
+
+      test
+        .request(0)
+        .query('data', json.output.peopleData, decode)
+        .expects(200);
+
+      test
+        .request(1)
+        .sends(json.output.listData)
+        .expects(200)
+        .end(done);
+    });
+
+    it('should override confirmOptin setting if provided', function(done){
+      var json = test.fixture('identify-list-override');
+      json.output.peopleData.token = settings.apiKey;
+      json.output.listData.api_key = settings.privateKey;
+
+      test
+        .set(settings)
+        .identify(json.input)
+        .requests(2);
+
+      test
+        .request(1)
+        .sends(json.output.listData)
         .expects(200)
         .end(done);
     });
 
     it('should error on invalid response', function(done){
+      var json = test.fixture('identify-basic');
+
       test
         .set({ apiKey: null })
-        .identify(helpers.identify())
-        .error('Klaviyo: bad response', done);
+        .identify(json.input)
+        .error('bad response', done);
+    });
+
+    it('should not try to hit list api if privateKey is not provided', function(done){
+      var json = test.fixture('identify-list');
+      delete settings.privateKey;
+
+      test
+        .set(settings)
+        .identify(json.input)
+        .requests(1)
+        .end(done);
+    });
+
+    it('should not try to hit list api if email is not provided', function(done){
+      var json = test.fixture('identify-list');
+      delete json.input.traits.email;
+
+      test
+        .set(settings)
+        .identify(json.input)
+        .requests(1)
+        .end(done);
+    });
+
+    it('should not try to hit list api if listId is not provided', function(done){
+      var json = test.fixture('identify-list');
+      delete json.input.integrations.Klaviyo.listId;
+
+      test
+        .set(settings)
+        .identify(json.input)
+        .requests(1)
+        .end(done);
     });
   });
 });
