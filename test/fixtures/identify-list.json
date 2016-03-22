@@ -1,0 +1,50 @@
+{
+  "input": {
+    "type": "identify",
+    "userId": "acp0m29",
+    "traits": {
+      "email": "newemail2@email.com",
+      "firstName": "Bender2",
+      "lastName": "Schmender",
+      "phone": "123456789",
+      "title": "Mr.Chocolate",
+      "organization": "org",
+      "company": "segment",
+      "some-trait": "value"
+    },
+    "integrations": {
+      "Klaviyo": {
+        "listId": "baVTu8"
+      }
+    }
+  },
+  "output": {
+    "listId": "baVTu8",
+    "peopleData": {
+      "token": "hfWBjc",
+      "properties": {
+        "$id": "acp0m29",
+        "$email": "newemail2@email.com",
+        "$first_name": "Bender2",
+        "$last_name": "Schmender",
+        "$phone_number": "123456789",
+        "$title": "Mr.Chocolate",
+        "$organization": "org",
+        "id": "acp0m29",
+        "email": "newemail2@email.com",
+        "firstName": "Bender2",
+        "lastName": "Schmender",
+        "phone": "123456789",
+        "title": "Mr.Chocolate",
+        "some-trait": "value",
+        "organization": "org",
+        "company": "segment"
+      }
+    },
+    "listData": {
+      "api_key": "pk_95773fc9a18f5728da58471d70a4dcbcdf",
+      "email": "newemail2@email.com",
+      "confirm_optin": true
+    }
+  }
+}

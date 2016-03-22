@@ -2,27 +2,25 @@
   "input": {
     "type": "identify",
     "userId": "01293721",
-    "context": {
-      "timezone": "Europe/Amsterdam"
-    },
     "traits": {
       "email": "bulgogi@bulgogi.com",
       "firstName": "Mclovin",
       "lastName": "Spongebob",
-      "phone": "5555",
-      "title": "some-title",
+      "phone": "123456789",
+      "title": "Mr.Chocolate",
       "organization": "org",
       "company": "segment",
-      "some-trait": "value",
-      "address": {
-        "city": "East Greenwich",
-        "state": "RI",
-        "postalCode": "02818",
-        "country": "USA"
+      "some-trait": "value"
+    },
+    "integrations": {
+      "Klaviyo": {
+        "listId": "baVTu8",
+        "confirmOptin": false
       }
     }
   },
   "output": {
+    "listId": "baVTu8",
     "peopleData": {
       "token": "hfWBjc",
       "properties": {
@@ -30,30 +28,24 @@
         "$email": "bulgogi@bulgogi.com",
         "$first_name": "Mclovin",
         "$last_name": "Spongebob",
-        "$phone_number": "5555",
-        "$title": "some-title",
+        "$phone_number": "123456789",
+        "$title": "Mr.Chocolate",
         "$organization": "org",
-        "$city": "East Greenwich",
-        "$country": "USA",
-        "$region": "RI",
-        "$zip": "02818",
-        "$timezone": "Europe/Amsterdam",
-        "address": {
-          "city": "East Greenwich",
-          "state": "RI",
-          "postalCode": "02818",
-          "country": "USA"
-        },
         "id": "01293721",
         "email": "bulgogi@bulgogi.com",
         "firstName": "Mclovin",
         "lastName": "Spongebob",
-        "phone": "5555",
-        "title": "some-title",
+        "phone": "123456789",
+        "title": "Mr.Chocolate",
         "some-trait": "value",
         "organization": "org",
         "company": "segment"
       }
+    },
+    "listData": {
+      "api_key": "pk_95773fc9a18f5728da58471d70a4dcbcdf",
+      "email": "bulgogi@bulgogi.com",
+      "confirm_optin": false
     }
   }
 }
