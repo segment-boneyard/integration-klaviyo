@@ -33,7 +33,7 @@
   "output": {
     "order": {
       "token" : "hfWBjc",
-      "event" : "Placed Order",
+      "event" : "Completed Order",
       "customer_properties" : {
         "$id": "user-id"
       },
