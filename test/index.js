@@ -5,6 +5,8 @@ var facade = require('segmentio-facade');
 var should = require('should');
 var assert = require('assert');
 var Klaviyo = require('..');
+var time = require('unix-time');
+var uid = require('uid');
 
 describe('Klaviyo', function () {
   var settings;
@@ -99,8 +101,15 @@ describe('Klaviyo', function () {
     });
 
     describe('.completedOrder()', function(){
-      it('should successfully send the Placed Order event', function(done){
+      it('should successfully send the Completed Order event', function(done){
         var json = test.fixture('track-completed-order');
+        var newOrderId = uid();
+        var newDate = new Date;
+        json.input.timestamp = newDate;
+        json.output.order.time = time(newDate);
+        json.input.properties.orderId = newOrderId;
+        json.output.order.properties.$event_id = newOrderId;
+
 
         test
           .set(settings)
@@ -111,20 +120,22 @@ describe('Klaviyo', function () {
           .end(done);
       });
 
-      it('should sucessfully send the Ordered Product event', function(done){
-        var json = test.fixture('track-completed-order');
-
-        test
-          .set(settings)
-          .track(json.input)
-          .request(1)
-          .query('data', json.output.products[0], decode)
-          .expects(200)
-          .end(done);
-      });
-
       it('should sucessfully send Order Product event for each product', function(done){
-        var json = test.fixture('track-completed-order');
+        var json = test.fixture('track-completed-order-urls');
+        var newDate = new Date;
+        var newOrderId = uid();
+        var newProductIdOne = uid();
+        var newProductIdTwo = uid();
+        json.input.timestamp = newDate;
+        json.output.order.time = time(newDate);
+        json.output.products[0].time = time(newDate);
+        json.output.products[1].time = time(newDate);
+        json.input.properties.orderId = newOrderId;
+        json.output.order.properties.$event_id = newOrderId;
+        json.input.properties.products[0].id = newProductIdOne;
+        json.input.properties.products[1].id = newProductIdTwo;
+        json.output.products[0].properties.$event_id = newProductIdOne;
+        json.output.products[1].properties.$event_id = newProductIdTwo;
 
         test
           .set(settings)
