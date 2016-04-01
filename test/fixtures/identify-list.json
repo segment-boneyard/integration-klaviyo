@@ -11,11 +11,6 @@
       "organization": "org",
       "company": "segment",
       "some-trait": "value"
-    },
-    "integrations": {
-      "Klaviyo": {
-        "listId": "baVTu8"
-      }
     }
   },
   "output": {

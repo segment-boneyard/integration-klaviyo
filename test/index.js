@@ -15,7 +15,8 @@ describe('Klaviyo', function () {
     settings = { 
       apiKey: 'hfWBjc',
       privateKey: 'pk_95773fc9a18f5728da58471d70a4dcbcdf',
-      confirmOptin: true 
+      confirmOptin: true,
+      listId: 'baVTu8' 
     };
     klaviyo = new Klaviyo(settings);
     test = Test(klaviyo, __dirname);
@@ -43,10 +44,12 @@ describe('Klaviyo', function () {
   describe('mapper', function(){
     describe('identify', function(){
       it('should map basic identify', function(){
+        delete settings.listId;
         test.maps('identify-basic', settings);
       });
 
       it('should fallback to anonymousId', function(){
+        delete settings.listId;
         test.maps('identify-anonymous-id', settings);
       });
 
@@ -181,8 +184,9 @@ describe('Klaviyo', function () {
         .end(done);
     });
 
-    it('should override confirmOptin setting if provided', function(done){
+    it('should override confirmOptin and listId setting if manually provided', function(done){
       var json = test.fixture('identify-list-override');
+      delete settings.listId;
       json.output.peopleData.token = settings.apiKey;
       json.output.listData.api_key = settings.privateKey;
 
@@ -231,7 +235,7 @@ describe('Klaviyo', function () {
 
     it('should not try to hit list api if listId is not provided', function(done){
       var json = test.fixture('identify-list');
-      delete json.input.integrations.Klaviyo.listId;
+      delete settings.listId;
 
       test
         .set(settings)
