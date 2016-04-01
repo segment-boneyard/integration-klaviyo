@@ -1,9 +1,9 @@
 {
   "input": {
-    "userId": "user-id",
+    "userId": "01293721",
     "type": "track",
     "event": "Completed Order",
-    "timestamp": "2014",
+    "timestamp": "2016",
     "properties": {
       "orderId": "order-id",
       "shipping": 5.00,
@@ -33,9 +33,9 @@
   "output": {
     "order": {
       "token" : "hfWBjc",
-      "event" : "Placed Order",
+      "event" : "Completed Order",
       "customer_properties" : {
-        "$id": "user-id"
+        "$id": "01293721"
       },
       "properties" : {
         "$event_id" : "order-id",
@@ -63,14 +63,14 @@
           }
         ]
       },
-      "time" : 1388534400
+      "time" : 1451606400
     },
     "products": [
       {
         "token": "hfWBjc",
         "event": "Ordered Product",
-        "time": 1388534400,
-        "customer_properties": { "$id": "user-id" },
+        "time": 1451606400,
+        "customer_properties": { "$id": "01293721" },
         "properties": {
           "$event_id": 123,
           "$value": 20,
@@ -84,8 +84,8 @@
       {
         "token": "hfWBjc",
         "event": "Ordered Product",
-        "time": 1388534400,
-        "customer_properties": { "$id": "user-id" },
+        "time": 1451606400,
+        "customer_properties": { "$id": "01293721" },
         "properties": {
           "$event_id": 455,
           "$value": 30,

@@ -1,11 +1,11 @@
 {
   "input": {
-    "userId": "user-id",
+    "userId": "01293721",
     "type": "track",
     "event": "Completed Order",
     "timestamp": "2014",
     "properties": {
-      "orderId": "order-id",
+      "orderId": "02914701298",
       "shipping": 5.00,
       "total": 65.00,
       "revenue": 50.00,
@@ -31,12 +31,12 @@
   "output": {
     "order": {
       "token" : "hfWBjc",
-      "event" : "Placed Order",
+      "event" : "Completed Order",
       "customer_properties" : {
-        "$id": "user-id"
+        "$id": "01293721"
       },
       "properties" : {
-        "$event_id" : "order-id",
+        "$event_id" : "02914701298",
         "$value" : 50.00,
         "Categories" : ["gaming", "console"],
         "Item Names" : ["sony pulse", "sony playstation 4"],
@@ -66,7 +66,7 @@
         "token": "hfWBjc",
         "event": "Ordered Product",
         "time": 1388534400,
-        "customer_properties": { "$id": "user-id" },
+        "customer_properties": { "$id": "01293721" },
         "properties": {
           "$event_id": 123,
           "$value": 20,
@@ -79,7 +79,7 @@
         "token": "hfWBjc",
         "event": "Ordered Product",
         "time": 1388534400,
-        "customer_properties": { "$id": "user-id" },
+        "customer_properties": { "$id": "01293721" },
         "properties": {
           "$event_id": 455,
           "$value": 30,
