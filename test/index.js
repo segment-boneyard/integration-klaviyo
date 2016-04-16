@@ -1,28 +1,26 @@
+'use strict';
 
 var Test = require('segmentio-integration-tester');
 var helpers = require('./helpers');
-var facade = require('segmentio-facade');
-var should = require('should');
-var assert = require('assert');
 var Klaviyo = require('..');
 
-describe('Klaviyo', function () {
+describe('Klaviyo', function() {
   var settings;
   var klaviyo;
   var test;
 
-  beforeEach(function(){
-    settings = { 
+  beforeEach(function() {
+    settings = {
       apiKey: 'hfWBjc',
       privateKey: 'pk_95773fc9a18f5728da58471d70a4dcbcdf',
       confirmOptin: true,
-      listId: 'baVTu8' 
+      listId: 'baVTu8'
     };
     klaviyo = new Klaviyo(settings);
     test = Test(klaviyo, __dirname);
   });
 
-  it('should have correct settings', function(){
+  it('should have correct settings', function() {
     test
       .name('Klaviyo')
       .endpoint('https://a.klaviyo.com/api')
@@ -30,48 +28,48 @@ describe('Klaviyo', function () {
       .channels(['server']);
   });
 
-  describe('.validate()', function () {
-    it('should be invalid when .apiKey is missing', function(){
+  describe('.validate()', function() {
+    it('should be invalid when .apiKey is missing', function() {
       delete settings.apiKey;
       test.invalid({}, settings);
     });
 
-    it('should be valid when given complete settings', function(){
+    it('should be valid when given complete settings', function() {
       test.valid({}, settings);
     });
   });
 
-  describe('mapper', function(){
-    describe('identify', function(){
-      it('should map basic identify', function(){
+  describe('mapper', function() {
+    describe('identify', function() {
+      it('should map basic identify', function() {
         delete settings.listId;
         test.maps('identify-basic', settings);
       });
 
-      it('should fallback to anonymousId', function(){
+      it('should fallback to anonymousId', function() {
         delete settings.listId;
         test.maps('identify-anonymous-id', settings);
       });
 
-      it('should map listData if provided', function(){
+      it('should map listData if provided', function() {
         test.maps('identify-list', settings);
       });
 
-      it('should map and override listData if options provided', function(){
+      it('should map and override listData if options provided', function() {
         test.maps('identify-list-override', settings);
       });
     });
 
-    describe('track', function(){
-      it('should map basic track', function(){
+    describe('track', function() {
+      it('should map basic track', function() {
         test.maps('track-basic', settings);
       });
 
-      it('should map orderId to $eventId', function(){
+      it('should map orderId to $eventId', function() {
         test.maps('track-orderId', settings);
       });
 
-      it('should map eventId to $eventId', function(){
+      it('should map eventId to $eventId', function() {
         test.maps('track-eventId', settings);
       });
 
@@ -85,8 +83,8 @@ describe('Klaviyo', function () {
     });
   });
 
-  describe('.track()', function () {
-    it('should be able to track correctly', function(done){
+  describe('.track()', function() {
+    it('should be able to track correctly', function(done) {
       test
         .set(settings)
         .track(helpers.track())
@@ -94,15 +92,15 @@ describe('Klaviyo', function () {
         .end(done);
     });
 
-    it('should error on invalid response', function(done){
+    it('should error on invalid response', function(done) {
       test
         .set({ apiKey: null })
         .track(helpers.track())
         .error('bad response', done);
     });
 
-    describe('.completedOrder()', function(){
-      it('should successfully send the Placed Order event', function(done){
+    describe('.completedOrder()', function() {
+      it('should successfully send the Placed Order event', function(done) {
         var json = test.fixture('track-completed-order');
 
         test
@@ -114,7 +112,7 @@ describe('Klaviyo', function () {
           .end(done);
       });
 
-      it('should sucessfully send the Ordered Product event', function(done){
+      it('should sucessfully send the Ordered Product event', function(done) {
         var json = test.fixture('track-completed-order');
 
         test
@@ -126,7 +124,7 @@ describe('Klaviyo', function () {
           .end(done);
       });
 
-      it('should sucessfully send Order Product event for each product', function(done){
+      it('should sucessfully send Order Product event for each product', function(done) {
         var json = test.fixture('track-completed-order');
 
         test
@@ -148,8 +146,8 @@ describe('Klaviyo', function () {
     });
   });
 
-  describe('.identify()', function () {
-    it('should perform an identify call', function(done){
+  describe('.identify()', function() {
+    it('should perform an identify call', function(done) {
       var json = test.fixture('identify-basic');
       json.output.peopleData.token = settings.apiKey;
 
@@ -162,7 +160,7 @@ describe('Klaviyo', function () {
       test.end(done);
     });
 
-    it('should perform an identify call and add to list if provided', function(done){
+    it('should perform an identify call and add to list if provided', function(done) {
       var json = test.fixture('identify-list');
       json.output.peopleData.token = settings.apiKey;
       json.output.listData.api_key = settings.privateKey;
@@ -184,7 +182,7 @@ describe('Klaviyo', function () {
         .end(done);
     });
 
-    it('should override confirmOptin and listId setting if manually provided', function(done){
+    it('should override confirmOptin and listId setting if manually provided', function(done) {
       var json = test.fixture('identify-list-override');
       delete settings.listId;
       json.output.peopleData.token = settings.apiKey;
@@ -202,7 +200,7 @@ describe('Klaviyo', function () {
         .end(done);
     });
 
-    it('should error on invalid response', function(done){
+    it('should error on invalid response', function(done) {
       var json = test.fixture('identify-basic');
 
       test
@@ -211,7 +209,7 @@ describe('Klaviyo', function () {
         .error('bad response', done);
     });
 
-    it('should not try to hit list api if privateKey is not provided', function(done){
+    it('should not try to hit list api if privateKey is not provided', function(done) {
       var json = test.fixture('identify-list');
       delete settings.privateKey;
 
@@ -222,7 +220,7 @@ describe('Klaviyo', function () {
         .end(done);
     });
 
-    it('should not try to hit list api if email is not provided', function(done){
+    it('should not try to hit list api if email is not provided', function(done) {
       var json = test.fixture('identify-list');
       delete json.input.traits.email;
 
@@ -233,7 +231,7 @@ describe('Klaviyo', function () {
         .end(done);
     });
 
-    it('should not try to hit list api if listId is not provided', function(done){
+    it('should not try to hit list api if listId is not provided', function(done) {
       var json = test.fixture('identify-list');
       delete settings.listId;
 
@@ -254,7 +252,7 @@ describe('Klaviyo', function () {
  * @api private
  */
 
-function decode(data){
+function decode(data) {
   var buf = new Buffer(data, 'base64');
   return JSON.parse(buf.toString());
 }
