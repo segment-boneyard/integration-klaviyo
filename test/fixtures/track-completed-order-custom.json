@@ -1,11 +1,13 @@
 {
   "input": {
-    "userId": "user-id",
+    "userId": "hamsolo",
     "type": "track",
     "event": "Completed Order",
     "timestamp": "2016",
     "properties": {
-      "orderId": "order-id",
+      "customProp": "boo",
+      "letMePass": ["hey", "world"],
+      "orderId": "order-id22",
       "shipping": 5.00,
       "total": 65.00,
       "revenue": 50.00,
@@ -19,7 +21,9 @@
         "name": "sony pulse",
         "quantity": 1,
         "productUrl": "http://www.example.com/path/to/product",
-        "imageUrl": "http://www.example.com/path/to/product/image.png"
+        "imageUrl": "http://www.example.com/path/to/product/image.png",
+        "customProductProp": "foo",
+        "customBrands": ["ps3"]
       }, {
         "id": 455,
         "sku": "sony-playstation-4-sku",
@@ -35,10 +39,15 @@
       "token" : "hfWBjc",
       "event" : "Placed Order",
       "customer_properties" : {
-        "$id": "user-id"
+        "$id": "hamsolo"
       },
       "properties" : {
-        "$event_id" : "order-id",
+        "customProp": "boo",
+        "letMePass": ["hey", "world"],
+        "currency": "USD",
+        "shipping": 5.00,
+        "tax": 10.00,
+        "$event_id" : "order-id22",
         "$value" : 50.00,
         "Categories" : ["gaming", "console"],
         "Item Names" : ["sony pulse", "sony playstation 4"],
@@ -52,6 +61,8 @@
             "Categories" : ["gaming"],
             "Product URL": "http://www.example.com/path/to/product",
             "Image URL": "http://www.example.com/path/to/product/image.png",
+            "customProductProp": "foo",
+            "customBrands": ["ps3"],
             "id": 123
           },
           {
@@ -63,10 +74,7 @@
             "Categories" : ["console"],
             "id": 455
           }
-        ],
-        "currency": "USD",
-        "shipping": 5,
-        "tax": 10
+        ]
       },
       "time" : 1451606400 
     },
@@ -75,7 +83,7 @@
         "token": "hfWBjc",
         "event": "Ordered Product",
         "time": 1451606400,
-        "customer_properties": { "$id": "user-id" },
+        "customer_properties": { "$id": "hamsolo" },
         "properties": {
           "$event_id": 123,
           "$value": 20,
@@ -83,14 +91,16 @@
           "Product Categories": ["gaming"],
           "Quantity": 1,
           "Product URL": "http://www.example.com/path/to/product",
-          "Image URL": "http://www.example.com/path/to/product/image.png"
+          "Image URL": "http://www.example.com/path/to/product/image.png",
+          "customProductProp": "foo",
+          "customBrands": ["ps3"]
         }
       },
       {
         "token": "hfWBjc",
         "event": "Ordered Product",
         "time": 1451606400,
-        "customer_properties": { "$id": "user-id" },
+        "customer_properties": { "$id": "hamsolo" },
         "properties": {
           "$event_id": 455,
           "$value": 30,
