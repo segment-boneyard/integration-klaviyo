@@ -79,10 +79,6 @@ describe('Klaviyo', function () {
         test.maps('track-completed-order', settings);
       });
 
-      it('should map completed order with urls', function() {
-        test.maps('track-completed-order-urls', settings);
-      });
-
       it('should map completed order with custom props', function() {
         test.maps('track-completed-order-custom', settings);
       });

@@ -59,9 +59,9 @@
             "Item Price" : 20.00,
             "Row Total" : 20.00,
             "Categories" : ["gaming"],
-            "Product URL": "http://www.example.com/path/to/product",
-            "Image URL": "http://www.example.com/path/to/product/image.png",
             "customProductProp": "foo",
+            "productUrl": "http://www.example.com/path/to/product",
+            "imageUrl": "http://www.example.com/path/to/product/image.png",
             "customBrands": ["ps3"],
             "id": 123
           },
@@ -90,8 +90,8 @@
           "Name": "sony pulse",
           "Product Categories": ["gaming"],
           "Quantity": 1,
-          "Product URL": "http://www.example.com/path/to/product",
-          "Image URL": "http://www.example.com/path/to/product/image.png",
+          "productUrl": "http://www.example.com/path/to/product",
+          "imageUrl": "http://www.example.com/path/to/product/image.png",
           "customProductProp": "foo",
           "customBrands": ["ps3"]
         }
