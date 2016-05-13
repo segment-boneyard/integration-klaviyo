@@ -15,6 +15,7 @@
   "dependencies": {
     "batch": "^0.5.2",
     "extend": "^2.0.0",
+    "obj-case": "^0.2.0",
     "reject": "0.0.1",
     "segmentio-integration": "^3.2.0",
     "unix-time": "^1.0.1"

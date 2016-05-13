@@ -79,8 +79,8 @@ describe('Klaviyo', function () {
         test.maps('track-completed-order', settings);
       });
 
-      it('should map completed order with urls', function() {
-        test.maps('track-completed-order-urls', settings);
+      it('should map completed order with custom props', function() {
+        test.maps('track-completed-order-custom', settings);
       });
     });
   });
@@ -142,6 +142,18 @@ describe('Klaviyo', function () {
         test
           .request(2)
           .query('data', json.output.products[1], decode)
+          .expects(200)
+          .end(done);
+      });
+
+      it('should let custom properties pass for completed order', function(done){
+        var json = test.fixture('track-completed-order-custom');
+
+        test
+          .set(settings)
+          .track(json.input)
+          .request(0)
+          .query('data', json.output.order, decode)
           .expects(200)
           .end(done);
       });
