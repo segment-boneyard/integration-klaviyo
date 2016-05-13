@@ -1,4 +1,10 @@
 
+1.0.12 / 2016-05-13
+===================
+
+  * remove look up for product and image urls
+  * let custom properties pass
+
 1.0.11 / 2016-04-01
 ===================
 
