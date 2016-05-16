@@ -1,4 +1,9 @@
 
+1.0.13 / 2016-05-16
+===================
+
+  * add back support for looking up product and image urls ;
+
 1.0.12 / 2016-05-13
 ===================
 
