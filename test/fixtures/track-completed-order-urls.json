@@ -1,13 +1,11 @@
 {
   "input": {
-    "userId": "hamsolo",
+    "userId": "user-id",
     "type": "track",
     "event": "Completed Order",
     "timestamp": "2016",
     "properties": {
-      "customProp": "boo",
-      "letMePass": ["hey", "world"],
-      "orderId": "order-id22",
+      "orderId": "order-id",
       "shipping": 5.00,
       "total": 65.00,
       "revenue": 50.00,
@@ -20,10 +18,8 @@
         "price": 20.00,
         "name": "sony pulse",
         "quantity": 1,
-        "productUrl": "http://www.example.com/path/to/product",
-        "imageUrl": "http://www.example.com/path/to/product/image.png",
-        "customProductProp": "foo",
-        "customBrands": ["ps3"]
+        "productUrl": "https://suhdude.com",
+        "imageUrl": "https://suhdude.com.jpg"
       }, {
         "id": 455,
         "sku": "sony-playstation-4-sku",
@@ -39,15 +35,10 @@
       "token" : "hfWBjc",
       "event" : "Placed Order",
       "customer_properties" : {
-        "$id": "hamsolo"
+        "$id": "user-id"
       },
       "properties" : {
-        "customProp": "boo",
-        "letMePass": ["hey", "world"],
-        "currency": "USD",
-        "shipping": 5.00,
-        "tax": 10.00,
-        "$event_id" : "order-id22",
+        "$event_id" : "order-id",
         "$value" : 50.00,
         "Categories" : ["gaming", "console"],
         "Item Names" : ["sony pulse", "sony playstation 4"],
@@ -59,11 +50,9 @@
             "Item Price" : 20.00,
             "Row Total" : 20.00,
             "Categories" : ["gaming"],
-            "customProductProp": "foo",
-            "Product URL": "http://www.example.com/path/to/product",
-            "Image URL": "http://www.example.com/path/to/product/image.png",
-            "customBrands": ["ps3"],
-            "id": 123
+            "id": 123,
+            "Product URL": "https://suhdude.com",
+            "Image URL": "https://suhdude.com.jpg"
           },
           {
             "SKU" : "sony-playstation-4-sku",
@@ -72,35 +61,36 @@
             "Item Price" : 30.00,
             "Row Total" : 30.00,
             "Categories" : ["console"],
-            "id": 455
+            "id": 455 
           }
-        ]
+        ],
+        "currency": "USD",
+        "shipping": 5,
+        "tax": 10
       },
-      "time" : 1451606400 
+      "time" : 1451606400
     },
     "products": [
       {
         "token": "hfWBjc",
         "event": "Ordered Product",
         "time": 1451606400,
-        "customer_properties": { "$id": "hamsolo" },
+        "customer_properties": { "$id": "user-id" },
         "properties": {
           "$event_id": 123,
           "$value": 20,
           "Name": "sony pulse",
           "Product Categories": ["gaming"],
           "Quantity": 1,
-          "Product URL": "http://www.example.com/path/to/product",
-          "Image URL": "http://www.example.com/path/to/product/image.png",
-          "customProductProp": "foo",
-          "customBrands": ["ps3"]
+          "Product URL": "https://suhdude.com",
+          "Image URL": "https://suhdude.com.jpg"
         }
       },
       {
         "token": "hfWBjc",
         "event": "Ordered Product",
         "time": 1451606400,
-        "customer_properties": { "$id": "hamsolo" },
+        "customer_properties": { "$id": "user-id" },
         "properties": {
           "$event_id": 455,
           "$value": 30,
