@@ -77,7 +77,8 @@
           "$value": 20,
           "Name": "sony pulse",
           "Product Categories": ["gaming"],
-          "Quantity": 1
+          "Quantity": 1,
+          "SKU" : "sony-pulse-sku"
         }
       },
       {
@@ -90,7 +91,8 @@
           "$value": 30,
           "Name": "sony playstation 4",
           "Product Categories": ["console"],
-          "Quantity": 1
+          "Quantity": 1,
+          "SKU" : "sony-playstation-4-sku"
         }
       }
     ]

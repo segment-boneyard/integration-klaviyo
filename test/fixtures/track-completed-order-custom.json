@@ -93,7 +93,8 @@
           "Product URL": "http://www.example.com/path/to/product",
           "Image URL": "http://www.example.com/path/to/product/image.png",
           "customProductProp": "foo",
-          "customBrands": ["ps3"]
+          "customBrands": ["ps3"],
+          "SKU": "sony-pulse-sku"
         }
       },
       {
@@ -106,7 +107,8 @@
           "$value": 30,
           "Name": "sony playstation 4",
           "Product Categories": ["console"],
-          "Quantity": 1
+          "Quantity": 1,
+          "SKU" : "sony-playstation-4-sku"
         }
       }
     ]
