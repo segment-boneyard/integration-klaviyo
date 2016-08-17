@@ -1,4 +1,4 @@
-[![Build Status](https://circleci.com/gh/segmentio/integration-klaviyo/tree/master.png?style=svg)](https://circleci.com/gh/segmentio/integration-klaviyo/tree/master)
+[![CircleCI](https://circleci.com/gh/segment-integrations/integration-klaviyo.svg?style=svg)](https://circleci.com/gh/segment-integrations/integration-klaviyo)
 
 # integration-klaviyo
 
