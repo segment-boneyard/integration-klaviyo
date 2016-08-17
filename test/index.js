@@ -75,16 +75,16 @@ describe('Klaviyo', function () {
         test.maps('track-eventId', settings);
       });
 
-      it('should map completed order', function() {
-        test.maps('track-completed-order', settings);
+      it('should map order completed', function() {
+        test.maps('track-order-completed', settings);
       });
 
-      it('should map completed order with urls', function() {
-        test.maps('track-completed-order-urls', settings);
+      it('should map order completed with urls', function() {
+        test.maps('track-order-completed-urls', settings);
       });
 
-      it('should map completed order with custom props', function() {
-        test.maps('track-completed-order-custom', settings);
+      it('should map order completed with custom props', function() {
+        test.maps('track-order-completed-custom', settings);
       });
     });
   });
@@ -107,7 +107,7 @@ describe('Klaviyo', function () {
 
     describe('.completedOrder()', function(){
       it('should successfully send the Placed Order event', function(done){
-        var json = test.fixture('track-completed-order');
+        var json = test.fixture('track-order-completed');
 
         test
           .set(settings)
@@ -119,7 +119,7 @@ describe('Klaviyo', function () {
       });
 
       it('should sucessfully send the Ordered Product event', function(done){
-        var json = test.fixture('track-completed-order');
+        var json = test.fixture('track-order-completed');
 
         test
           .set(settings)
@@ -131,7 +131,7 @@ describe('Klaviyo', function () {
       });
 
       it('should sucessfully send Order Product event for each product', function(done){
-        var json = test.fixture('track-completed-order');
+        var json = test.fixture('track-order-completed');
 
         test
           .set(settings)
@@ -150,8 +150,8 @@ describe('Klaviyo', function () {
           .end(done);
       });
 
-      it('should let custom properties pass for completed order', function(done){
-        var json = test.fixture('track-completed-order-custom');
+      it('should let custom properties pass for order completed', function(done){
+        var json = test.fixture('track-order-completed-custom');
 
         test
           .set(settings)

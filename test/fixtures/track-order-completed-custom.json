@@ -2,7 +2,7 @@
   "input": {
     "userId": "hamsolo",
     "type": "track",
-    "event": "Completed Order",
+    "event": "Order Completed",
     "timestamp": "2016",
     "properties": {
       "customProp": "boo",

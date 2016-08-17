@@ -2,7 +2,7 @@
   "input": {
     "userId": "user-id",
     "type": "track",
-    "event": "Completed Order",
+    "event": "Order Completed",
     "timestamp": "2016",
     "properties": {
       "orderId": "order-id",
