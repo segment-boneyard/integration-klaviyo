@@ -5,14 +5,14 @@
     "event": "Order Completed",
     "timestamp": "2016",
     "properties": {
-      "orderId": "order-id",
+      "order_id": "order-id",
       "shipping": 5.00,
       "total": 65.00,
       "revenue": 50.00,
       "tax": 10.00,
       "currency": "USD",
       "products": [{
-        "id": 123,
+        "product_id": 123,
         "sku": "sony-pulse-sku",
         "category": "gaming",
         "price": 20.00,
@@ -21,7 +21,7 @@
         "productUrl": "https://suhdude.com",
         "imageUrl": "https://suhdude.com.jpg"
       }, {
-        "id": 455,
+        "product_id": 455,
         "sku": "sony-playstation-4-sku",
         "category": "console",
         "price": 30.00,
@@ -50,7 +50,7 @@
             "Item Price" : 20.00,
             "Row Total" : 20.00,
             "Categories" : ["gaming"],
-            "id": 123,
+            "product_id": 123,
             "Product URL": "https://suhdude.com",
             "Image URL": "https://suhdude.com.jpg"
           },
@@ -61,7 +61,7 @@
             "Item Price" : 30.00,
             "Row Total" : 30.00,
             "Categories" : ["console"],
-            "id": 455 
+            "product_id": 455
           }
         ],
         "currency": "USD",

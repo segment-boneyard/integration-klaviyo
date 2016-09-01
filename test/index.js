@@ -12,11 +12,11 @@ describe('Klaviyo', function () {
   var test;
 
   beforeEach(function(){
-    settings = { 
+    settings = {
       apiKey: 'hfWBjc',
       privateKey: 'pk_95773fc9a18f5728da58471d70a4dcbcdf',
       confirmOptin: true,
-      listId: 'baVTu8' 
+      listId: 'baVTu8'
     };
     klaviyo = new Klaviyo(settings);
     test = Test(klaviyo, __dirname);

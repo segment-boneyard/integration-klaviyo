@@ -7,14 +7,14 @@
     "properties": {
       "customProp": "boo",
       "letMePass": ["hey", "world"],
-      "orderId": "order-id22",
+      "order_id": "order-id22",
       "shipping": 5.00,
       "total": 65.00,
       "revenue": 50.00,
       "tax": 10.00,
       "currency": "USD",
       "products": [{
-        "id": 123,
+        "product_id": 123,
         "sku": "sony-pulse-sku",
         "category": "gaming",
         "price": 20.00,
@@ -25,7 +25,7 @@
         "customProductProp": "foo",
         "customBrands": ["ps3"]
       }, {
-        "id": 455,
+        "product_id": 455,
         "sku": "sony-playstation-4-sku",
         "category": "console",
         "price": 30.00,
@@ -63,7 +63,7 @@
             "Product URL": "http://www.example.com/path/to/product",
             "Image URL": "http://www.example.com/path/to/product/image.png",
             "customBrands": ["ps3"],
-            "id": 123
+            "product_id": 123
           },
           {
             "SKU" : "sony-playstation-4-sku",
@@ -72,11 +72,11 @@
             "Item Price" : 30.00,
             "Row Total" : 30.00,
             "Categories" : ["console"],
-            "id": 455
+            "product_id": 455
           }
         ]
       },
-      "time" : 1451606400 
+      "time" : 1451606400
     },
     "products": [
       {
