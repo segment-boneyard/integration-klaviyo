@@ -85,7 +85,7 @@
         "time": 1451606400,
         "customer_properties": { "$id": "hamsolo" },
         "properties": {
-          "$event_id": 123,
+          "$event_id": "order-id22_123",
           "$value": 20,
           "Name": "sony pulse",
           "Product Categories": ["gaming"],
@@ -103,7 +103,7 @@
         "time": 1451606400,
         "customer_properties": { "$id": "hamsolo" },
         "properties": {
-          "$event_id": 455,
+          "$event_id": "order-id22_455",
           "$value": 30,
           "Name": "sony playstation 4",
           "Product Categories": ["console"],
