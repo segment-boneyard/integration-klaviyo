@@ -1,4 +1,9 @@
 
+1.1.2 / 2016-10-25
+==================
+
+  * send userId as $id in listData object for Add to Lists endpoint
+
 
 1.1.1 / 2016-10-18
 ==================
