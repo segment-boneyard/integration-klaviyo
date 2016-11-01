@@ -2,6 +2,7 @@
 var Test = require('segmentio-integration-tester');
 var helpers = require('./helpers');
 var facade = require('segmentio-facade');
+var random = require('randomstring').generate;
 var should = require('should');
 var assert = require('assert');
 var Klaviyo = require('..');
@@ -48,7 +49,7 @@ describe('Klaviyo', function () {
         test.maps('identify-basic', settings);
       });
 
-      it('should fallback to anonymousId', function(){
+      it('should map anonymousId', function(){
         delete settings.listId;
         test.maps('identify-anonymous-id', settings);
       });
@@ -178,7 +179,7 @@ describe('Klaviyo', function () {
       test.end(done);
     });
 
-    it('should perform an identify call and add to list if provided', function(done){
+    it('should perform an identify call and not add to list if email exists', function(done){
       var json = test.fixture('identify-list');
       json.output.peopleData.token = settings.apiKey;
       json.output.listData.api_key = settings.privateKey;
@@ -189,12 +190,51 @@ describe('Klaviyo', function () {
         .requests(2);
 
       test
+        // identify
+        .request(0)
+        .query('data', json.output.peopleData, decode)
+        .expects(200);
+
+      test
+        // check (pass)
+        .request(1)
+        .expects(200)
+        .end(done);
+
+        // no add to list request
+    });
+
+    it('should perform an identify call and add to list if unique id+email', function(done){
+      var json = test.fixture('identify-list');
+      json.output.peopleData.token = settings.apiKey;
+      json.output.listData.api_key = settings.privateKey;
+
+      var randomEmail = random(7) + '@random.com';
+      json.input.traits.email = randomEmail;
+      json.output.listData.email = randomEmail;
+      json.output.peopleData.properties.$email = randomEmail;
+
+      var randomId = random(7);
+      json.input.userId = randomId;
+      json.output.listData.properties.$id = randomId;
+      json.output.peopleData.properties.$id = randomId;
+
+      test
+        .set(settings)
+        .identify(json.input)
+        .requests(3);
+
+      test
         .request(0)
         .query('data', json.output.peopleData, decode)
         .expects(200);
 
       test
         .request(1)
+        .expects(200);
+
+      test
+        .request(2)
         .sends(json.output.listData)
         .expects(200)
         .end(done);
@@ -206,13 +246,34 @@ describe('Klaviyo', function () {
       json.output.peopleData.token = settings.apiKey;
       json.output.listData.api_key = settings.privateKey;
 
+      var randomEmail = random(7) + '@random.com';
+      json.input.traits.email = randomEmail;
+      json.output.listData.email = randomEmail;
+      json.output.peopleData.properties.$email = randomEmail;
+
+      var randomId = random(7);
+      json.input.userId = randomId;
+      json.output.listData.properties.$id = randomId;
+      json.output.peopleData.properties.$id = randomId;
+
       test
         .set(settings)
         .identify(json.input)
-        .requests(2);
+        .requests(3)
 
       test
+        // identify
+        .request(0)
+        .expects(200);
+
+       test
+        // check (fail)
         .request(1)
+        .expects(200);
+
+      test
+        // add to list
+        .request(2)
         .sends(json.output.listData)
         .expects(200)
         .end(done);

@@ -30,16 +30,8 @@
         "$last_name": "Spongebob",
         "$phone_number": "123456789",
         "$title": "Mr.Chocolate",
-        "$organization": "org",
-        "id": "01293721",
-        "email": "bulgogi@bulgogi.com",
-        "firstName": "Mclovin",
-        "lastName": "Spongebob",
-        "phone": "123456789",
-        "title": "Mr.Chocolate",
-        "some-trait": "value",
-        "organization": "org",
-        "company": "segment"
+        "$organization": "segment",
+        "some-trait": "value"
       }
     },
     "listData": {
