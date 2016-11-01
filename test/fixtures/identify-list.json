@@ -24,16 +24,8 @@
         "$last_name": "Schmender",
         "$phone_number": "123456789",
         "$title": "Mr.Chocolate",
-        "$organization": "org",
-        "id": "acp0m29",
-        "email": "newemail2@email.com",
-        "firstName": "Bender2",
-        "lastName": "Schmender",
-        "phone": "123456789",
-        "title": "Mr.Chocolate",
-        "some-trait": "value",
-        "organization": "org",
-        "company": "segment"
+        "$organization": "segment",
+        "some-trait": "value"
       }
     },
     "listData": {
