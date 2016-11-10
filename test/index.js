@@ -4,12 +4,20 @@ var helpers = require('./helpers');
 var facade = require('segmentio-facade');
 var should = require('should');
 var assert = require('assert');
+var redis = require('redis');
 var Klaviyo = require('..');
 
 describe('Klaviyo', function () {
   var settings;
   var klaviyo;
   var test;
+  var db;
+
+  before(function(done){
+    db = redis.createClient();
+    db.on('ready', done);
+    db.on('error', done);
+  });
 
   beforeEach(function(){
     settings = {
@@ -20,6 +28,7 @@ describe('Klaviyo', function () {
     };
     klaviyo = new Klaviyo(settings);
     test = Test(klaviyo, __dirname);
+    klaviyo.redis(db);
   });
 
   it('should have correct settings', function(){
@@ -168,6 +177,7 @@ describe('Klaviyo', function () {
     it('should perform an identify call', function(done){
       var json = test.fixture('identify-basic');
       json.output.peopleData.token = settings.apiKey;
+      delete settings.listId;
 
       test
         .set(settings)
@@ -190,14 +200,14 @@ describe('Klaviyo', function () {
 
       test
         .request(0)
-        .query('data', json.output.peopleData, decode)
-        .expects(200);
-
-      test
-        .request(1)
         .sends(json.output.listData)
         .expects(200)
         .end(done);
+
+      test
+        .request(1)
+        .query('data', json.output.peopleData, decode)
+        .expects(200);
     });
 
     it('should override confirmOptin and listId setting if manually provided', function(done){
@@ -212,7 +222,7 @@ describe('Klaviyo', function () {
         .requests(2);
 
       test
-        .request(1)
+        .request(0)
         .sends(json.output.listData)
         .expects(200)
         .end(done);
