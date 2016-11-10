@@ -21,11 +21,13 @@
     "unix-time": "^1.0.1"
   },
   "devDependencies": {
+    "batch": "^0.5.3",
     "istanbul": "0.x",
     "jscs": "1.x",
     "merge-util": "^0.1.0",
     "mocha": "2.x",
     "ms": "0.x",
+    "redis": "^2.6.3",
     "segmentio-facade": "^3.x",
     "segmentio-integration-tester": "^2.x",
     "should": "^4.3.0",
