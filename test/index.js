@@ -16,7 +16,8 @@ describe('Klaviyo', function () {
       apiKey: 'hfWBjc',
       privateKey: 'pk_95773fc9a18f5728da58471d70a4dcbcdf',
       confirmOptin: true,
-      listId: 'baVTu8'
+      listId: 'baVTu8',
+      sendAnonymous: true
     };
     klaviyo = new Klaviyo(settings);
     test = Test(klaviyo, __dirname);
@@ -39,6 +40,12 @@ describe('Klaviyo', function () {
     it('should be valid when given complete settings', function(){
       test.valid({}, settings);
     });
+
+    it('should require userid if sendAnonymous is false', function() {
+      settings.sendAnonymous = false;
+      test.valid({ userId: '123' }, settings);
+      test.invalid({}, settings);
+    })
   });
 
   describe('mapper', function(){
@@ -53,11 +60,11 @@ describe('Klaviyo', function () {
         test.maps('identify-anonymous-id', settings);
       });
 
-      it('should map listData if provided', function(){
+      it('should map list data if provided', function(){
         test.maps('identify-list', settings);
       });
 
-      it('should map and override listData if options provided', function(){
+      it('should map and override list data if options provided', function(){
         test.maps('identify-list-override', settings);
       });
     });
@@ -167,35 +174,35 @@ describe('Klaviyo', function () {
   describe('.identify()', function () {
     it('should perform an identify call', function(done){
       var json = test.fixture('identify-basic');
-      json.output.peopleData.token = settings.apiKey;
+      json.output.token = settings.apiKey;
+      delete settings.listId;
 
       test
         .set(settings)
         .identify(json.input)
-        .query('data', json.output.peopleData, decode)
+        .query('data', {
+          token: json.output.token,
+          properties: json.output.properties
+        }, decode)
         .expects(200);
 
       test.end(done);
     });
 
-    it('should perform an identify call and add to list if provided', function(done){
+    it('should add to list if provided', function(done){
       var json = test.fixture('identify-list');
-      json.output.peopleData.token = settings.apiKey;
-      json.output.listData.api_key = settings.privateKey;
+      json.output.token = settings.apiKey;
+      json.output.apiKey = settings.privateKey;
 
       test
         .set(settings)
         .identify(json.input)
-        .requests(2);
-
-      test
-        .request(0)
-        .query('data', json.output.peopleData, decode)
-        .expects(200);
-
-      test
-        .request(1)
-        .sends(json.output.listData)
+        .sends({
+          api_key: json.output.apiKey,
+          email: json.output.email,
+          properties: json.output.properties,
+          confirm_optin: json.output.confirmOptIn
+        })
         .expects(200)
         .end(done);
     });
@@ -203,26 +210,29 @@ describe('Klaviyo', function () {
     it('should override confirmOptin and listId setting if manually provided', function(done){
       var json = test.fixture('identify-list-override');
       delete settings.listId;
-      json.output.peopleData.token = settings.apiKey;
-      json.output.listData.api_key = settings.privateKey;
+      json.output.token = settings.apiKey;
+      json.output.apiKey = settings.privateKey;
 
       test
         .set(settings)
         .identify(json.input)
-        .requests(2);
-
-      test
-        .request(1)
-        .sends(json.output.listData)
+        .sends({
+          api_key: json.output.apiKey,
+          email: json.output.email,
+          properties: json.output.properties,
+          confirm_optin: json.output.confirmOptIn
+        })
         .expects(200)
         .end(done);
     });
 
     it('should error on invalid response', function(done){
       var json = test.fixture('identify-basic');
+      settings.apiKey = null;
+      delete settings.listId; // force identify
 
       test
-        .set({ apiKey: null })
+        .set(settings)
         .identify(json.input)
         .error('bad response', done);
     });
@@ -234,18 +244,28 @@ describe('Klaviyo', function () {
       test
         .set(settings)
         .identify(json.input)
-        .requests(1)
+        .query('data', {
+          token: json.output.token,
+          properties: json.output.properties
+        }, decode)
+        .expects(200)
         .end(done);
     });
 
     it('should not try to hit list api if email is not provided', function(done){
       var json = test.fixture('identify-list');
       delete json.input.traits.email;
+      delete json.output.properties.email;
+      delete json.output.properties.$email;
 
       test
         .set(settings)
         .identify(json.input)
-        .requests(1)
+        .query('data', {
+          token: json.output.token,
+          properties: json.output.properties
+        }, decode)
+        .expects(200)
         .end(done);
     });
 
@@ -256,7 +276,11 @@ describe('Klaviyo', function () {
       test
         .set(settings)
         .identify(json.input)
-        .requests(1)
+        .query('data', {
+          token: json.output.token,
+          properties: json.output.properties
+        }, decode)
+        .expects(200)
         .end(done);
     });
   });
