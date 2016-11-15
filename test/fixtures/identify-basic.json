@@ -23,37 +23,38 @@
     }
   },
   "output": {
-    "peopleData": {
-      "token": "hfWBjc",
-      "properties": {
-        "$id": "hamsolo",
-        "$email": "hamsolo@gmail.com",
-        "$first_name": "ham",
-        "$last_name": "turkey",
-        "$phone_number": "5555",
-        "$title": "some-title",
-        "$organization": "org",
-        "$city": "East Greenwich",
-        "$country": "USA",
-        "$region": "RI",
-        "$zip": "02818",
-        "$timezone": "Europe/Amsterdam",
-        "address": {
-          "city": "East Greenwich",
-          "state": "RI",
-          "postalCode": "02818",
-          "country": "USA"
-        },
-        "id": "hamsolo",
-        "email": "hamsolo@gmail.com",
-        "firstName": "ham",
-        "lastName": "turkey",
-        "phone": "5555",
-        "title": "some-title",
-        "some-trait": "value",
-        "organization": "org",
-        "company": "segment"
-      }
+    "apiKey": "pk_95773fc9a18f5728da58471d70a4dcbcdf",
+    "confirmOptIn": true,
+    "email": "hamsolo@gmail.com",
+    "token": "hfWBjc",
+    "properties": {
+      "$id": "hamsolo",
+      "$email": "hamsolo@gmail.com",
+      "$first_name": "ham",
+      "$last_name": "turkey",
+      "$phone_number": "5555",
+      "$title": "some-title",
+      "$organization": "org",
+      "$city": "East Greenwich",
+      "$country": "USA",
+      "$region": "RI",
+      "$zip": "02818",
+      "$timezone": "Europe/Amsterdam",
+      "address": {
+        "city": "East Greenwich",
+        "state": "RI",
+        "postalCode": "02818",
+        "country": "USA"
+      },
+      "id": "hamsolo",
+      "email": "hamsolo@gmail.com",
+      "firstName": "ham",
+      "lastName": "turkey",
+      "phone": "5555",
+      "title": "some-title",
+      "some-trait": "value",
+      "organization": "org",
+      "company": "segment"
     }
   }
 }

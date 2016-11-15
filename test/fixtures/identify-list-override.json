@@ -21,34 +21,27 @@
   },
   "output": {
     "listId": "baVTu8",
-    "peopleData": {
-      "token": "hfWBjc",
-      "properties": {
-        "$id": "01293721",
-        "$email": "bulgogi@bulgogi.com",
-        "$first_name": "Mclovin",
-        "$last_name": "Spongebob",
-        "$phone_number": "123456789",
-        "$title": "Mr.Chocolate",
-        "$organization": "org",
-        "id": "01293721",
-        "email": "bulgogi@bulgogi.com",
-        "firstName": "Mclovin",
-        "lastName": "Spongebob",
-        "phone": "123456789",
-        "title": "Mr.Chocolate",
-        "some-trait": "value",
-        "organization": "org",
-        "company": "segment"
-      }
-    },
-    "listData": {
-      "properties": {
-        "$id": "01293721"
-      },
-      "api_key": "pk_95773fc9a18f5728da58471d70a4dcbcdf",
+    "token": "hfWBjc",
+    "properties": {
+      "$id": "01293721",
+      "$email": "bulgogi@bulgogi.com",
+      "$first_name": "Mclovin",
+      "$last_name": "Spongebob",
+      "$phone_number": "123456789",
+      "$title": "Mr.Chocolate",
+      "$organization": "org",
+      "id": "01293721",
       "email": "bulgogi@bulgogi.com",
-      "confirm_optin": false
-    }
+      "firstName": "Mclovin",
+      "lastName": "Spongebob",
+      "phone": "123456789",
+      "title": "Mr.Chocolate",
+      "some-trait": "value",
+      "organization": "org",
+      "company": "segment"
+    },
+    "apiKey": "pk_95773fc9a18f5728da58471d70a4dcbcdf",
+    "email": "bulgogi@bulgogi.com",
+    "confirmOptIn": false
   }
 }
