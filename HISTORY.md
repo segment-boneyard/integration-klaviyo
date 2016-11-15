@@ -1,9 +1,15 @@
 
+1.2.0 / 2016-11-15
+==================
+
+  * Fix List API duplicate profile issue
+  * Falling back on anonymousId now gated behind an option
+  * Improve logic to use less API calls to Klaviyo per Segment message
+
 1.1.2 / 2016-10-25
 ==================
 
   * send userId as $id in listData object for Add to Lists endpoint
-
 
 1.1.1 / 2016-10-18
 ==================
