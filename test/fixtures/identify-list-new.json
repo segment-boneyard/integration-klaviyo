@@ -1,0 +1,38 @@
+{
+  "input": {
+    "type": "identify",
+    "traits": {
+      "email": "chris+cool@sperand.io",
+      "firstName": "Christopher",
+      "lastName": "Sperandio",
+      "phone": "123456789",
+      "title": "PM",
+      "organization": "Segment",
+      "company": "Segment",
+      "coolness_factor": 10
+    }
+  },
+  "output": {
+    "listId": "FHAHL2",
+    "token": "hfWBjc",
+    "properties": {
+      "$email": "chris+cool@sperand.io",
+      "$first_name": "Christopher",
+      "$last_name": "Sperandio",
+      "$phone_number": "123456789",
+      "$title": "PM",
+      "$organization": "Segment",
+      "email": "chris+cool@sperand.io",
+      "firstName": "Christopher",
+      "lastName": "Sperandio",
+      "phone": "123456789",
+      "title": "PM",
+      "coolness_factor": 10,
+      "organization": "Segment",
+      "company": "Segment"
+    },
+    "apiKey": "pk_95773fc9a18f5728da58471d70a4dcbcdf",
+    "email": "chris+cool@sperand.io",
+    "confirmOptIn": false
+  }
+}

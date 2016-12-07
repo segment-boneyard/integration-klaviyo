@@ -4,6 +4,8 @@ var helpers = require('./helpers');
 var facade = require('segmentio-facade');
 var should = require('should');
 var assert = require('assert');
+var randomString = require('randomstring').generate;
+var uuid = require('uuid').v4;
 var Klaviyo = require('..');
 
 describe('Klaviyo', function () {
@@ -15,8 +17,8 @@ describe('Klaviyo', function () {
     settings = {
       apiKey: 'hfWBjc',
       privateKey: 'pk_95773fc9a18f5728da58471d70a4dcbcdf',
-      confirmOptin: true,
-      listId: 'baVTu8',
+      confirmOptin: false,
+      listId: 'FHAHL2',
       sendAnonymous: true
     };
     klaviyo = new Klaviyo(settings);
@@ -207,6 +209,52 @@ describe('Klaviyo', function () {
         .end(done);
     });
 
+    it.only('should add to list and identify if not already in list', function(done){
+      var json = test.fixture('identify-list-new');
+      json.output.token = settings.apiKey;
+      json.output.apiKey = settings.privateKey;
+
+      // create random user
+      var random = randomIdAndEmail();
+      var id = random.id;
+      var email = random.email;
+
+      // yikes
+      json.input.userId = id;
+      json.input.traits.email = email;
+      json.output.email = email;
+      json.output.properties.$id = id;
+      json.output.properties.id = id;
+      json.output.properties.$email = email;
+      json.output.properties.email = email;
+
+      // ensure that, because this is a new user, we identify after adding to list
+      test
+        .set(settings)
+        .identify(json.input)
+        .requests(2)
+
+      test
+        .request(0)
+        .sends({
+          api_key: json.output.apiKey,
+          email: json.output.email,
+          properties: json.output.properties,
+          confirm_optin: json.output.confirmOptIn
+        })
+        .expects(200);
+
+      test
+        .request(1)
+        .query('data', {
+          token: json.output.token,
+          properties: json.output.properties
+        }, decode)
+        .expects(200);
+
+      test.end(done);
+    });
+
     it('should override confirmOptin and listId setting if manually provided', function(done){
       var json = test.fixture('identify-list-override');
       delete settings.listId;
@@ -297,4 +345,16 @@ describe('Klaviyo', function () {
 function decode(data){
   var buf = new Buffer(data, 'base64');
   return JSON.parse(buf.toString());
+}
+
+/**
+ * Return random id and email
+ * @return {Object} { id, email }
+ */
+
+function randomIdAndEmail() {
+  return {
+    id: uuid(),
+    email: 'chris+' + randomString(8) + '@sperand.io'
+  }
 }
