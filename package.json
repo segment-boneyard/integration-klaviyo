@@ -1,6 +1,6 @@
 {
   "name": "integration-klaviyo",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "private": true,
   "description": "Klaviyo server-side integration",
   "author": "Segment <friends@segment.com>",

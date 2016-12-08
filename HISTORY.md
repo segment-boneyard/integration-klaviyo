@@ -1,4 +1,9 @@
 
+1.2.1 / 2016-12-08
+==================
+
+  * Fix a bug that around properties not being updated for user profiles 
+
 1.2.0 / 2016-11-15
 ==================
 
