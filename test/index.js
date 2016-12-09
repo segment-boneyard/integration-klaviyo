@@ -200,7 +200,7 @@ describe('Klaviyo', function () {
         .sends({
           api_key: json.output.apiKey,
           email: json.output.email,
-          properties: json.output.properties,
+          properties: JSON.stringify(json.output.properties),
           confirm_optin: json.output.confirmOptIn
         })
         .expects(200)
@@ -219,7 +219,7 @@ describe('Klaviyo', function () {
         .sends({
           api_key: json.output.apiKey,
           email: json.output.email,
-          properties: json.output.properties,
+          properties: JSON.stringify(json.output.properties),
           confirm_optin: json.output.confirmOptIn
         })
         .expects(200)
