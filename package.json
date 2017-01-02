@@ -26,10 +26,12 @@
     "merge-util": "^0.1.0",
     "mocha": "2.x",
     "ms": "0.x",
+    "randomstring": "^1.1.5",
     "segmentio-facade": "^3.x",
     "segmentio-integration-tester": "^2.x",
     "should": "^4.3.0",
     "uid": "0.0.2",
-    "unix-time": "1.x"
+    "unix-time": "1.x",
+    "uuid": "^3.0.1"
   }
 }
