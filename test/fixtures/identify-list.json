@@ -26,13 +26,13 @@
       "company": "segment",
       "some-trait": "value",
       "id": "acp0m29",
-      "$id": "acp0m29",
       "$email": "newemail2@email.com",
       "$first_name": "Bender2",
       "$last_name": "Schmender",
       "$phone_number": "123456789",
       "$title": "Mr.Chocolate",
-      "$organization": "org"
+      "$organization": "org",
+      "$id": "acp0m29"
     },
     "apiKey": "pk_95773fc9a18f5728da58471d70a4dcbcdf",
     "email": "newemail2@email.com",
