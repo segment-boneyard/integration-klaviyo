@@ -17,7 +17,8 @@ describe('Klaviyo', function () {
       privateKey: 'pk_95773fc9a18f5728da58471d70a4dcbcdf',
       confirmOptin: true,
       listId: 'baVTu8',
-      sendAnonymous: true
+      sendAnonymous: true,
+      enforceEmail: false,
     };
     klaviyo = new Klaviyo(settings);
     test = Test(klaviyo, __dirname);
@@ -60,6 +61,12 @@ describe('Klaviyo', function () {
         test.maps('identify-anonymous-id', settings);
       });
 
+      it('should map correctly when email is enforced', function(){
+        delete settings.listId;
+        settings.enforceEmail = true;
+        test.maps('identify-email-only', settings);
+      });
+
       it('should map list data if provided', function(){
         test.maps('identify-list', settings);
       });
@@ -67,11 +74,17 @@ describe('Klaviyo', function () {
       it('should map and override list data if options provided', function(){
         test.maps('identify-list-override', settings);
       });
+
     });
 
     describe('track', function(){
       it('should map basic track', function(){
         test.maps('track-basic', settings);
+      });
+
+      it('should map basic track with email enforced', function(){
+        settings.enforceEmail = true;
+        test.maps('track-email-only', settings);
       });
 
       it('should map orderId to $eventId', function(){
@@ -110,6 +123,19 @@ describe('Klaviyo', function () {
         .set({ apiKey: null })
         .track(helpers.track())
         .error('bad response', done);
+    });
+
+    it('should successfully send the track with only email', function(done){
+      var json = test.fixture('track-email-only');
+      settings.enforceEmail = true;
+
+      test
+        .set(settings)
+        .track(json.input)
+        .request(0)
+        .query('data', json.output, decode)
+        .expects(200)
+        .end(done);
     });
 
     describe('.completedOrder()', function(){
@@ -176,6 +202,24 @@ describe('Klaviyo', function () {
       var json = test.fixture('identify-basic');
       json.output.token = settings.apiKey;
       delete settings.listId;
+
+      test
+        .set(settings)
+        .identify(json.input)
+        .query('data', {
+          token: json.output.token,
+          properties: json.output.properties
+        }, decode)
+        .expects(200);
+
+      test.end(done);
+    });
+
+    it('should perform an identify call with just email', function(done){
+      var json = test.fixture('identify-email-only');
+      json.output.token = settings.apiKey;
+      delete settings.listId;
+      settings.enforceEmail = true;
 
       test
         .set(settings)

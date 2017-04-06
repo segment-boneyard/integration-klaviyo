@@ -32,13 +32,13 @@
       "company": "segment",
       "some-trait": "value",
       "id": "01293721",
-      "$id": "01293721",
       "$email": "bulgogi@bulgogi.com",
       "$first_name": "Mclovin",
       "$last_name": "Spongebob",
       "$phone_number": "123456789",
       "$title": "Mr.Chocolate",
-      "$organization": "org"
+      "$organization": "org",
+      "$id": "01293721"
     },
     "apiKey": "pk_95773fc9a18f5728da58471d70a4dcbcdf",
     "email": "bulgogi@bulgogi.com",
