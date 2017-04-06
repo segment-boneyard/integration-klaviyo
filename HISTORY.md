@@ -1,10 +1,14 @@
 
+1.4.0 / 2017-04-05
+==================
+
+  * Add new option to only send $email and not $id for dupe reasons with Klaviyo's API
+
 1.3.0 / 2017-01-31
 ==================
 
   * Standardize integration (linting, Docker configuration, circle.yml, upgrade
 segmentio-integration version, upgrade integration-worker version, etc.)
-
 
 1.2.1 / 2016-12-08
 ==================
