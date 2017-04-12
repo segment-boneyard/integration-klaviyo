@@ -35,10 +35,10 @@
       "$email": "bulgogi@bulgogi.com",
       "$first_name": "Mclovin",
       "$last_name": "Spongebob",
+      "$id": "01293721",
       "$phone_number": "123456789",
       "$title": "Mr.Chocolate",
-      "$organization": "org",
-      "$id": "01293721"
+      "$organization": "org"
     },
     "apiKey": "pk_95773fc9a18f5728da58471d70a4dcbcdf",
     "email": "bulgogi@bulgogi.com",

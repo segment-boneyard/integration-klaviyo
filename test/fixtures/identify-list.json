@@ -29,10 +29,10 @@
       "$email": "newemail2@email.com",
       "$first_name": "Bender2",
       "$last_name": "Schmender",
+      "$id": "acp0m29",
       "$phone_number": "123456789",
       "$title": "Mr.Chocolate",
-      "$organization": "org",
-      "$id": "acp0m29"
+      "$organization": "org"
     },
     "apiKey": "pk_95773fc9a18f5728da58471d70a4dcbcdf",
     "email": "newemail2@email.com",
