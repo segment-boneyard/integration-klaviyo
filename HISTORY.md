@@ -1,4 +1,9 @@
 
+1.4.1 / 2017-04-12
+==================
+
+  * Also remove `id` for enforce email option introduced in 1.4.0 
+
 1.4.0 / 2017-04-05
 ==================
 
