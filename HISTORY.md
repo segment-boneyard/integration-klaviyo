@@ -1,4 +1,9 @@
 
+1.4.2 / 2017-04-13
+==================
+
+  * Send `Order Completed` instead of `Placed Order` for event name if you set new option to use Segment Ecommerce Spec 
+
 1.4.1 / 2017-04-12
 ==================
 
