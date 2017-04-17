@@ -19,7 +19,7 @@ describe('Klaviyo', function () {
       listId: 'baVTu8',
       sendAnonymous: true,
       enforceEmail: false,
-      useSegmentSpec: false
+      useSegmentSpec: true
     };
     klaviyo = new Klaviyo(settings);
     test = Test(klaviyo, __dirname);
@@ -140,8 +140,10 @@ describe('Klaviyo', function () {
     });
 
     describe('.completedOrder()', function(){
-      it('should successfully send the Placed Order event', function(done){
+      it('should successfully send the Placed Order event if segment spec is disabled', function(done){
+        klaviyo.settings.useSegmentSpec = false;
         var json = test.fixture('track-order-completed');
+        json.output.order.event = 'Placed Order';
 
         test
           .set(settings)
@@ -153,9 +155,7 @@ describe('Klaviyo', function () {
       });
 
       it('should successfully send the Order Completed event if using segment spec', function(done){
-        klaviyo.settings.useSegmentSpec = true;
         var json = test.fixture('track-order-completed');
-        json.output.order.event = 'Order Completed';
 
         test
           .set(settings)
